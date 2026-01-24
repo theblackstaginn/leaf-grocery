@@ -246,5 +246,40 @@
 
   </div><!-- /.page -->
 
+  <!-- Fullscreen modal script for menu images -->
+  <script>
+    (function () {
+      const images = document.querySelectorAll('.menu-image');
+      images.forEach(img => {
+        img.addEventListener('click', () => {
+          const modal = document.createElement('div');
+          modal.className = 'menu-modal';
+
+          const full = document.createElement('img');
+          full.src = img.src;
+          full.alt = img.alt || '';
+
+          const closeBtn = document.createElement('button');
+          closeBtn.className = 'menu-modal-close';
+          closeBtn.type = 'button';
+          closeBtn.innerHTML = '&times;';
+
+          closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            modal.remove();
+          });
+
+          modal.addEventListener('click', () => {
+            modal.remove();
+          });
+
+          modal.appendChild(full);
+          modal.appendChild(closeBtn);
+          document.body.appendChild(modal);
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>
