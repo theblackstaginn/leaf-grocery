@@ -297,6 +297,16 @@ body {
   margin-top: 1.25rem;
 }
 
+/* Individual menu sheets (breakfast, lunch, BBQ) */
+.menu-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin-top: 1.25rem;
+  box-shadow: var(--shadow-soft);
+}
+
 /* ==============================
    Photo grid
    ============================== */
