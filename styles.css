@@ -180,6 +180,10 @@ h2 {
     url("assets-leaf/leaf_hero_clean.PNG") center/cover no-repeat;
   filter: saturate(1.05);
   transform: scale(1.02);
+
+  /* force background to match device width */
+  background-size: 100% auto;
+  background-position: top center;
 }
 
 .hero-inner {
@@ -265,7 +269,8 @@ h2 {
 .section-menu,
 .section-photos,
 .section-about,
-.section-contact {
+.section-contact,
+.section-cater {
   background: transparent;
 }
 
@@ -360,7 +365,7 @@ h2 {
 }
 
 /* ==============================
-   About card
+   About / Cater cards
    ============================== */
 
 .about-inner {
@@ -585,8 +590,8 @@ h2 {
 
   /* hero background fixed-width style on small devices */
   .hero-bg {
-    background-size: auto 100%;
-    background-position: center;
+    background-size: 100% auto;      /* width = device width */
+    background-position: top center; /* consistent framing */
   }
 
   .photo-card img {
