@@ -1,149 +1,417 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Leaf Grocery & Deli – Cleveland, GA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Leaf Grocery & Deli – hot breakfast, burgers, sandwiches, and grab-and-go sweets in Cleveland, Georgia." />
+/* ==============================
+   Base + tokens
+   ============================== */
 
-  <!-- Icons: use the ROOT logo file exactly as-is -->
-  <link rel="icon" href="leaf-logo.PNG">
-  <link rel="apple-touch-icon" href="leaf-logo.PNG">
-  <!-- Manifest can be added later -->
+:root {
+  --navy: #0a1a44;
+  --red: #b3001b;
+  --bg-wood: #f3e1c9;
+  --text-main: #1a1a1a;
+  --text-muted: #555;
+  --card-bg: rgba(255, 255, 255, 0.96);
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.25);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --wrap-width: 1120px;
+}
 
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-  <div class="page">
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
-    <!-- HEADER -->
-    <header class="site-header">
-      <div class="wrap header-inner">
-        <div class="brand">
-          <img src="leaf-logo.PNG" alt="Leaf Grocery and Deli" class="brand-mark" />
-          <div class="brand-text">
-            <span class="brand-main">Leaf Grocery &amp; Deli</span>
-            <span class="brand-sub">Cleveland, Georgia</span>
-          </div>
-        </div>
-        <nav class="main-nav">
-          <a href="#menu">Menu</a>
-          <a href="#photos">Photos</a>
-          <a href="#about">About</a>
-        </nav>
-      </div>
-    </header>
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: var(--text-main);
+  background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed
+    no-repeat;
+}
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="wrap hero-inner">
-        <div class="hero-content">
-          <h1>Hot food, cold drinks, friendly faces.</h1>
-          <p>
-            Local Texaco &amp; deli serving breakfast biscuits, burgers, tacos,
-            sweets and more on the Leaf Highway.
-          </p>
-          <div class="hero-actions">
-            <!-- TODO: replace 7060000000 with Leaf's real phone number -->
-            <a href="tel:7060000000" class="btn btn-primary">Call Leaf Grocery</a>
-          </div>
-        </div>
-      </div>
-    </section>
+/* Layout container for max width */
+.wrap {
+  width: 100%;
+  max-width: var(--wrap-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
 
-    <!-- MENU (placeholder for now) -->
-    <section id="menu" class="section section-menu">
-      <div class="wrap menu-inner">
-        <div class="menu-card">
-          <h2>Menu</h2>
-          <p>
-            Full menu coming soon. Leaf serves hot breakfast, burgers, sandwiches,
-            tacos, sweets, and party trays. A photo of the printed menu will live here
-            once it’s ready.
-          </p>
-        </div>
-      </div>
-    </section>
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-    <!-- FOOD PHOTOS -->
-    <section id="photos" class="section section-photos">
-      <div class="wrap">
-        <header class="section-head">
-          <h2>From the Leaf deli window</h2>
-          <p>Real plates, real trays, no stock photos.</p>
-        </header>
+/* ==============================
+   Header
+   ============================== */
 
-        <div class="photo-grid">
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(10, 26, 68, 0.96);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/burger.PNG" alt="Cheeseburger with fries">
-          </article>
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0;
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/bbq-burger.PNG" alt="BBQ bacon burger with onion rings">
-          </article>
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/bisquits.PNG" alt="Tray of golden buttermilk biscuits">
-          </article>
+.brand-mark {
+  width: 120px;
+  height: auto;
+  display: block;
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/cookie-1.PNG" alt="Birthday cake celebration cookie">
-          </article>
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/cookie-2.PNG" alt="Butterfinger cookie in clamshell">
-          </article>
+.brand-main {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/quesadilla.PNG" alt="Chicken tacos with fries">
-          </article>
+.brand-sub {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/ribs.PNG" alt="Pan of smoked ribs">
-          </article>
+.main-nav {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/cater-1.PNG" alt="Catering trays with appetizers">
-          </article>
+.main-nav a {
+  color: #f8f8f8;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 0.15rem;
+}
 
-          <article class="photo-card">
-            <img src="assets-leaf/cater-2.PNG" alt="Close-up of appetizer trays">
-          </article>
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--red);
+  transition: width 0.18s ease-out;
+}
 
-        </div>
-      </div>
-    </section>
+.main-nav a:hover::after {
+  width: 100%;
+}
 
-    <!-- ABOUT -->
-    <section id="about" class="section section-about">
-      <div class="wrap about-inner">
-        <div class="about-card">
-          <h2>Local stop on Leaf Highway</h2>
-          <p>
-            Leaf Grocery &amp; Deli is the neighborhood stop for fuel, coffee,
-            hot breakfast, burgers, and sweets. This is a simple photo site to
-            start; full menu, hours, and contact info will be added soon.
-          </p>
-          <p class="about-note">
-            Site currently in progress by Black Stag Web. Information here is
-            for preview only.
-          </p>
-        </div>
-      </div>
-    </section>
+/* ==============================
+   Hero
+   ============================== */
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <p class="footer-main">Leaf Grocery &amp; Deli – Cleveland, GA</p>
-        <p class="footer-sub">Website build in progress • Black Stag Web Studio</p>
-      </div>
-    </footer>
+.hero {
+  position: relative;
+  color: #fff;
+  min-height: 60vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+}
 
-  </div><!-- /.page -->
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.78)
+    ),
+    url("assets-leaf/leaf_hero_clean.PNG") center/cover no-repeat;
+  filter: saturate(1.05);
+  transform: scale(1.02);
+}
 
-</body>
-</html>
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 0 3rem;
+}
+
+.hero-content {
+  max-width: 28rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
+  margin: 0 0 0.75rem;
+}
+
+.hero p {
+  margin: 0 0 1.5rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+    background 0.12s ease-out, color 0.12s ease-out;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.55);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ==============================
+   Sections
+   ============================== */
+
+.section {
+  padding: 3.5rem 0;
+}
+
+.section-photos {
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.8), transparent),
+    transparent;
+}
+
+.section-about {
+  padding-bottom: 4rem;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-head h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.7rem;
+  color: var(--navy);
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* ==============================
+   Menu
+   ============================== */
+
+.section-menu {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.menu-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-card {
+  max-width: 640px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.75rem 1.6rem;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.menu-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  color: var(--navy);
+}
+
+.menu-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+/* ==============================
+   Photo grid
+   ============================== */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.photo-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  display: flex;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+/* ==============================
+   About card
+   ============================== */
+
+.about-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.about-card {
+  max-width: 640px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.75rem 1.6rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.about-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  color: var(--navy);
+}
+
+.about-card p {
+  margin: 0 0 0.9rem;
+  line-height: 1.6;
+}
+
+.about-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+.site-footer {
+  margin-top: auto;
+  background: #111827;
+  color: #d1d5db;
+  padding: 1.2rem 0 1.4rem;
+}
+
+.footer-inner {
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.footer-main {
+  margin: 0 0 0.2rem;
+  font-weight: 500;
+}
+
+.footer-sub {
+  margin: 0;
+  color: #9ca3af;
+}
+
+/* ==============================
+   Responsive tweaks
+   ============================== */
+
+@media (max-width: 900px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .brand-mark {
+    width: 100px;
+  }
+
+  .main-nav {
+    gap: 0.75rem;
+  }
+
+  .hero-inner {
+    padding-top: 3rem;
+    padding-bottom: 2.7rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .photo-card img {
+    height: 180px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+}
