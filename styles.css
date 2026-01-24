@@ -160,11 +160,13 @@ body {
   z-index: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 3.5rem 0 3rem;
 }
 
 .hero-content {
   max-width: 28rem;
+  text-align: center;
 }
 
 .hero h1 {
@@ -182,6 +184,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  justify-content: center;
 }
 
 .btn {
@@ -253,12 +256,46 @@ body {
 }
 
 /* ==============================
+   Menu
+   ============================== */
+
+.section-menu {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.menu-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-card {
+  max-width: 640px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.75rem 1.6rem;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.menu-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  color: var(--navy);
+}
+
+.menu-card p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+/* ==============================
    Photo grid
    ============================== */
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
 }
 
@@ -268,7 +305,6 @@ body {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
   overflow: hidden;
   display: flex;
-  flex-direction: column;
 }
 
 .photo-card img {
@@ -277,8 +313,6 @@ body {
   height: 190px;
   object-fit: cover;
 }
-
-/* No labels under photos anymore – h3 removed in HTML */
 
 /* ==============================
    About card
@@ -308,7 +342,6 @@ body {
   line-height: 1.6;
 }
 
-.about-note is author only.
 .about-note {
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -344,6 +377,12 @@ body {
    Responsive tweaks
    ============================== */
 
+@media (max-width: 900px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 720px) {
   .header-inner {
     flex-direction: column;
@@ -370,5 +409,9 @@ body {
 
   .photo-card img {
     height: 180px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
   }
 }
