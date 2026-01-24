@@ -278,12 +278,7 @@ body {
   object-fit: cover;
 }
 
-.photo-card h3 {
-  margin: 0;
-  padding: 0.85rem 0.9rem 0.95rem;
-  font-size: 1rem;
-  color: var(--navy);
-}
+/* No labels under photos anymore – h3 removed in HTML */
 
 /* ==============================
    About card
@@ -313,6 +308,7 @@ body {
   line-height: 1.6;
 }
 
+.about-note is author only.
 .about-note {
   font-size: 0.85rem;
   color: var(--text-muted);
