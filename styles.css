@@ -289,6 +289,14 @@ body {
   color: var(--text-main);
 }
 
+.menu-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin-top: 1.25rem;
+}
+
 /* ==============================
    Photo grid
    ============================== */
@@ -348,6 +356,99 @@ body {
 }
 
 /* ==============================
+   Contact
+   ============================== */
+
+.section-contact {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.contact-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.75rem 1.6rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.contact-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  color: var(--navy);
+}
+
+.contact-address {
+  margin: 0 0 0.5rem;
+  line-height: 1.5;
+}
+
+.contact-phone {
+  margin: 0 0 0.75rem;
+}
+
+.contact-phone a {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-phone a:hover {
+  text-decoration: underline;
+}
+
+.contact-hours-label {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.contact-hours {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+  color: var(--text-main);
+}
+
+.contact-hours li {
+  margin-bottom: 0.15rem;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btn-contact {
+  min-width: 130px;
+}
+
+.contact-map {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  background: #000;
+}
+
+.map-embed-wrapper {
+  position: relative;
+  padding-top: 65%; /* responsive ratio */
+}
+
+.map-embed-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ==============================
    Footer
    ============================== */
 
@@ -380,6 +481,14 @@ body {
 @media (max-width: 900px) {
   .photo-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map {
+    order: -1;
   }
 }
 
