@@ -22,21 +22,17 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text-main);
-  background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed
-    no-repeat;
+  background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed no-repeat;
 }
 
-/* Layout container for max width */
 .wrap {
   width: 100%;
   max-width: var(--wrap-width);
@@ -60,7 +56,7 @@ body {
   z-index: 20;
   background: rgba(10, 26, 68, 0.96);
   color: #fff;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.45);
 }
 
 .header-inner {
@@ -145,11 +141,7 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.65),
-      rgba(0, 0, 0, 0.78)
-    ),
+    linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.78)),
     url("assets-leaf/leaf_hero_clean.PNG") center/cover no-repeat;
   filter: saturate(1.05);
   transform: scale(1.02);
@@ -197,71 +189,49 @@ body {
   border: 1px solid transparent;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
-    background 0.12s ease-out, color 0.12s ease-out;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
 }
 
 .btn-primary {
   background: var(--red);
   color: #fff;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.55);
 }
 
 .btn-ghost {
   background: transparent;
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255,255,255,0.7);
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255,255,255,0.12);
 }
 
 /* ==============================
-   Sections
+   Transparent Section Panels
    ============================== */
 
 .section {
   padding: 3.5rem 0;
+  background: transparent !important;
 }
 
-.section-photos {
-  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.8), transparent),
-    transparent;
-}
-
-.section-about {
-  padding-bottom: 4rem;
-}
-
-.section-head {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.section-head h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.7rem;
-  color: var(--navy);
-}
-
-.section-head p {
-  margin: 0;
-  color: var(--text-muted);
+.section-menu,
+.section-photos,
+.section-about,
+.section-contact {
+  background: transparent !important;
 }
 
 /* ==============================
    Menu
    ============================== */
-
-.section-menu {
-  background: rgba(255, 255, 255, 0.9);
-}
 
 .menu-inner {
   display: flex;
@@ -272,7 +242,7 @@ body {
   max-width: 640px;
   background: var(--card-bg);
   border-radius: var(--radius-lg);
-  padding: 1.75rem 1.75rem 1.6rem;
+  padding: 1.75rem;
   box-shadow: var(--shadow-soft);
   text-align: center;
 }
@@ -286,18 +256,9 @@ body {
 .menu-card p {
   margin: 0;
   line-height: 1.6;
-  color: var(--text-main);
 }
 
-.menu-banner img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-md);
-  margin-top: 1.25rem;
-}
-
-/* Individual menu sheets (breakfast, lunch, BBQ) */
+.menu-banner img,
 .menu-image {
   display: block;
   width: 100%;
@@ -308,7 +269,7 @@ body {
 }
 
 /* ==============================
-   Photo grid
+   Photos
    ============================== */
 
 .photo-grid {
@@ -320,20 +281,19 @@ body {
 .photo-card {
   background: var(--card-bg);
   border-radius: var(--radius-md);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
   overflow: hidden;
   display: flex;
 }
 
 .photo-card img {
-  display: block;
   width: 100%;
   height: 190px;
   object-fit: cover;
 }
 
 /* ==============================
-   About card
+   About Card
    ============================== */
 
 .about-inner {
@@ -345,97 +305,25 @@ body {
   max-width: 640px;
   background: var(--card-bg);
   border-radius: var(--radius-lg);
-  padding: 1.75rem 1.75rem 1.6rem;
+  padding: 1.75rem;
   box-shadow: var(--shadow-soft);
-}
-
-.about-card h2 {
-  margin-top: 0;
-  font-size: 1.6rem;
-  color: var(--navy);
-}
-
-.about-card p {
-  margin: 0 0 0.9rem;
-  line-height: 1.6;
-}
-
-.about-note {
-  font-size: 0.85rem;
-  color: var(--text-muted);
 }
 
 /* ==============================
    Contact
    ============================== */
 
-.section-contact {
-  background: rgba(255, 255, 255, 0.95);
-}
-
 .contact-inner {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
   gap: 1.75rem;
-  align-items: stretch;
 }
 
 .contact-card {
   background: var(--card-bg);
   border-radius: var(--radius-lg);
-  padding: 1.75rem 1.75rem 1.6rem;
+  padding: 1.75rem;
   box-shadow: var(--shadow-soft);
-}
-
-.contact-card h2 {
-  margin-top: 0;
-  font-size: 1.6rem;
-  color: var(--navy);
-}
-
-.contact-address {
-  margin: 0 0 0.5rem;
-  line-height: 1.5;
-}
-
-.contact-phone {
-  margin: 0 0 0.75rem;
-}
-
-.contact-phone a {
-  color: var(--navy);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.contact-phone a:hover {
-  text-decoration: underline;
-}
-
-.contact-hours-label {
-  margin: 0 0 0.25rem;
-  font-weight: 600;
-  color: var(--navy);
-}
-
-.contact-hours {
-  margin: 0 0 1rem;
-  padding-left: 1.1rem;
-  color: var(--text-main);
-}
-
-.contact-hours li {
-  margin-bottom: 0.15rem;
-}
-
-.contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.btn-contact {
-  min-width: 130px;
 }
 
 .contact-map {
@@ -443,19 +331,6 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   background: #000;
-}
-
-.map-embed-wrapper {
-  position: relative;
-  padding-top: 65%; /* responsive ratio */
-}
-
-.map-embed-wrapper iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
 }
 
 /* ==============================
@@ -467,36 +342,21 @@ body {
   background: #111827;
   color: #d1d5db;
   padding: 1.2rem 0 1.4rem;
-}
-
-.footer-inner {
   text-align: center;
   font-size: 0.85rem;
 }
 
-.footer-main {
-  margin: 0 0 0.2rem;
-  font-weight: 500;
-}
-
-.footer-sub {
-  margin: 0;
-  color: #9ca3af;
-}
-
 /* ==============================
-   Responsive tweaks
+   Responsive
    ============================== */
 
 @media (max-width: 900px) {
   .photo-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
   .contact-inner {
     grid-template-columns: 1fr;
   }
-
   .contact-map {
     order: -1;
   }
@@ -505,31 +365,11 @@ body {
 @media (max-width: 720px) {
   .header-inner {
     flex-direction: column;
-    align-items: flex-start;
     gap: 0.35rem;
   }
-
   .brand-mark {
     width: 100px;
   }
-
-  .main-nav {
-    gap: 0.75rem;
-  }
-
-  .hero-inner {
-    padding-top: 3rem;
-    padding-bottom: 2.7rem;
-  }
-
-  .hero-content {
-    max-width: 100%;
-  }
-
-  .photo-card img {
-    height: 180px;
-  }
-
   .photo-grid {
     grid-template-columns: 1fr;
   }
