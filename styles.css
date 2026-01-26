@@ -195,7 +195,7 @@ h2 {
 }
 
 .hero-content {
-  max-width: 28rem;
+  max-width: 32rem; /* was 28rem */
   text-align: center;
 }
 
