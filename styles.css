@@ -161,11 +161,12 @@ h2 {
 .hero {
   position: relative;
   color: #fff;
-  min-height: 60vh;
+  /* let it breathe more on desktop */
+  min-height: 75vh;
   display: flex;
-  align-items: stretch;
+  align-items: center;   /* center content vertically */
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;     /* don’t clip top or bottom */
 }
 
 .hero-bg {
