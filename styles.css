@@ -161,7 +161,7 @@ h2 {
 .hero {
   position: relative;
   color: #fff;
-  min-height: 65vh; /* opened up a bit more */
+  min-height: 60vh;
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -190,7 +190,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3.8rem 0 3.6rem; /* a bit more bottom padding */
+  padding: 3.5rem 0 4.75rem; /* extra space for wood buttons */
 }
 
 .hero-content {
@@ -474,22 +474,26 @@ h2 {
   margin-bottom: 0.15rem;
 }
 
-/* centered single call button */
 .contact-actions {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1rem;
+  justify-content: center;   /* center the wood button */
+}
+
+/* image-based contact call button */
+.contact-call-img {
+  display: inline-flex;
+}
+
+.contact-call-img img {
+  display: block;
+  max-width: 220px; /* match hero button width */
+  height: auto;
 }
 
 .btn-contact {
   min-width: 130px;
-}
-
-.contact-call-btn {
-  min-width: 160px;
-  text-align: center;
 }
 
 .contact-map {
@@ -607,8 +611,8 @@ h2 {
   }
 
   .hero-inner {
-    padding-top: 3.2rem;
-    padding-bottom: 3.2rem;
+    padding-top: 3rem;
+    padding-bottom: 3.8rem; /* a bit tighter on very small screens */
   }
 
   .hero-content {
