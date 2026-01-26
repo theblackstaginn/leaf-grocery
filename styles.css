@@ -161,7 +161,7 @@ h2 {
 .hero {
   position: relative;
   color: #fff;
-  min-height: 70vh;
+  min-height: 65vh; /* opened up a bit more */
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -190,7 +190,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3.5rem 0 5rem;
+  padding: 3.8rem 0 3.6rem; /* a bit more bottom padding */
 }
 
 .hero-content {
@@ -211,10 +211,10 @@ h2 {
 
 .hero-actions {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   gap: 0.9rem;
+  justify-content: center;
   margin-top: 0.5rem;
-  flex-wrap: nowrap;           /* force side-by-side on wider screens */
 }
 
 /* image-based hero buttons */
@@ -224,7 +224,7 @@ h2 {
 
 .hero-btn-img img {
   display: block;
-  max-width: 200px;           /* slightly smaller so 2 fit in the text column */
+  max-width: 220px;
   height: auto;
 }
 
@@ -474,14 +474,22 @@ h2 {
   margin-bottom: 0.15rem;
 }
 
+/* centered single call button */
 .contact-actions {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+  margin-top: 1rem;
 }
 
 .btn-contact {
   min-width: 130px;
+}
+
+.contact-call-btn {
+  min-width: 160px;
+  text-align: center;
 }
 
 .contact-map {
@@ -599,8 +607,8 @@ h2 {
   }
 
   .hero-inner {
-    padding-top: 3rem;
-    padding-bottom: 2.7rem;
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
   }
 
   .hero-content {
@@ -610,11 +618,6 @@ h2 {
   .hero-bg {
     background-size: 100% auto;
     background-position: top center;
-  }
-
-  /* stack buttons on small screens so they don't overflow */
-  .hero-actions {
-    flex-wrap: wrap;
   }
 
   .photo-card img {
