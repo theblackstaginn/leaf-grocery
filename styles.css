@@ -211,10 +211,10 @@ h2 {
 
 .hero-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
   justify-content: center;
+  gap: 0.9rem;
   margin-top: 0.5rem;
+  flex-wrap: nowrap;           /* force side-by-side on wider screens */
 }
 
 /* image-based hero buttons */
@@ -224,7 +224,7 @@ h2 {
 
 .hero-btn-img img {
   display: block;
-  max-width: 220px;
+  max-width: 200px;           /* slightly smaller so 2 fit in the text column */
   height: auto;
 }
 
@@ -610,6 +610,11 @@ h2 {
   .hero-bg {
     background-size: 100% auto;
     background-position: top center;
+  }
+
+  /* stack buttons on small screens so they don't overflow */
+  .hero-actions {
+    flex-wrap: wrap;
   }
 
   .photo-card img {
