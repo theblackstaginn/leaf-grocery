@@ -217,6 +217,15 @@ h2 {
   gap: 0.75rem;
   justify-content: center;
 }
+.hunt-bros-logo {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.hunt-bros-logo img {
+  max-width: 180px;
+  height: auto;
+}
 
 /* ==============================
    Buttons
