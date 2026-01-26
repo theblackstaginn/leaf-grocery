@@ -478,7 +478,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  justify-content: center;   /* center the wood button */
+  justify-content: center;
 }
 
 /* image-based contact call button */
@@ -488,7 +488,7 @@ h2 {
 
 .contact-call-img img {
   display: block;
-  max-width: 220px; /* match hero button width */
+  max-width: 220px;
   height: auto;
 }
 
@@ -610,9 +610,15 @@ h2 {
     gap: 0.75rem;
   }
 
+  /* let hero grow and add space so text + buttons are fully visible */
+  .hero {
+    min-height: auto;
+    overflow: visible;
+  }
+
   .hero-inner {
-    padding-top: 3rem;
-    padding-bottom: 3.8rem; /* a bit tighter on very small screens */
+    padding-top: 4.25rem;   /* clear sticky header */
+    padding-bottom: 3.5rem; /* room for wood buttons */
   }
 
   .hero-content {
