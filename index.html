@@ -9,6 +9,7 @@
     content="Leaf Grocery &amp; Deli – hot breakfast, burgers, sandwiches, pizza, and grab-and-go sweets in Cleveland, Georgia."
   />
 
+  <!-- Icons: use the ROOT logo file exactly as-is -->
   <link rel="icon" href="leaf-logo.PNG" />
   <link rel="apple-touch-icon" href="leaf-logo.PNG" />
 
@@ -51,25 +52,17 @@
           <p>
             plus, our wonderful deli serves up the best breakfast and lunch in town!
           </p>
-
-          <!-- REPLACED SINGLE BUTTON WITH WOOD BUTTON PAIR -->
-          <div class="hero-actions">
-            <a href="tel:+17062191390" class="hero-wood-btn">
-              <img
-                src="assets-leaf/call-button.png"
-                alt="Call Leaf Grocery"
-              />
+          <div class="hero-actions wood-actions">
+            <a href="tel:+17062191390" class="wood-btn">
+              <img src="assets-leaf/call-button.png" alt="Call Leaf Grocery" />
             </a>
             <a
-              href="https://www.facebook.com/leafgrocery"
-              class="hero-wood-btn"
+              href="#"
+              class="wood-btn"
               target="_blank"
               rel="noopener"
             >
-              <img
-                src="assets-leaf/facebook-button.png"
-                alt="Leaf Grocery on Facebook"
-              />
+              <img src="assets-leaf/facebook-button.png" alt="Leaf Grocery on Facebook" />
             </a>
           </div>
         </div>
@@ -91,6 +84,7 @@
             <img src="assets-leaf/hunt-bros-logo.png" alt="Hunt Brothers Logo" />
           </div>
 
+          <!-- Hunts Brothers banner -->
           <div class="menu-banner">
             <img
               src="assets-leaf/hunts-bros.png"
@@ -98,6 +92,7 @@
             />
           </div>
 
+          <!-- Printed menu sheets -->
           <img
             src="assets-leaf/brekkie-menu.png"
             alt="Leaf Grocery &amp; Deli – breakfast menu"
@@ -131,23 +126,38 @@
           </article>
 
           <article class="photo-card">
-            <img src="assets-leaf/bbq-burger.PNG" alt="BBQ bacon burger with onion rings" />
+            <img
+              src="assets-leaf/bbq-burger.PNG"
+              alt="BBQ bacon burger with onion rings"
+            />
           </article>
 
           <article class="photo-card">
-            <img src="assets-leaf/bisquits.PNG" alt="Tray of golden buttermilk biscuits" />
+            <img
+              src="assets-leaf/bisquits.PNG"
+              alt="Tray of golden buttermilk biscuits"
+            />
           </article>
 
           <article class="photo-card">
-            <img src="assets-leaf/cookie-1.PNG" alt="Birthday cake celebration cookie" />
+            <img
+              src="assets-leaf/cookie-1.PNG"
+              alt="Birthday cake celebration cookie"
+            />
           </article>
 
           <article class="photo-card">
-            <img src="assets-leaf/cookie-2.PNG" alt="Butterfinger cookie in clamshell" />
+            <img
+              src="assets-leaf/cookie-2.PNG"
+              alt="Butterfinger cookie in clamshell"
+            />
           </article>
 
           <article class="photo-card">
-            <img src="assets-leaf/quesadilla.PNG" alt="Chicken quesadilla with fries" />
+            <img
+              src="assets-leaf/quesadilla.PNG"
+              alt="Chicken quesadilla with fries"
+            />
           </article>
 
           <article class="photo-card">
@@ -155,11 +165,17 @@
           </article>
 
           <article class="photo-card">
-            <img src="assets-leaf/cater-1.PNG" alt="Catering trays with appetizers" />
+            <img
+              src="assets-leaf/cater-1.PNG"
+              alt="Catering trays with appetizers"
+            />
           </article>
 
           <article class="photo-card">
-            <img src="assets-leaf/cater-2.PNG" alt="Close-up of appetizer trays" />
+            <img
+              src="assets-leaf/cater-2.PNG"
+              alt="Close-up of appetizer trays"
+            />
           </article>
         </div>
       </div>
@@ -175,7 +191,8 @@
             pizza, and Stewby the Pig’s BBQ, Leaf can help feed your crew.
           </p>
           <p>
-            Call the store to ask about platter options, quantities, and pricing for work lunches, family gatherings, game days, and weekend get-togethers.
+            Call the store to ask about platter options, quantities, and pricing for
+            work lunches, family gatherings, game days, and weekend get-togethers.
           </p>
           <p>
             For catering questions, reach us at <a href="tel:+17062191390">(706) 219-1390</a>.
@@ -191,7 +208,8 @@
           <h2>Local stop on Highway 115</h2>
           <p>
             Leaf Grocery &amp; Deli is the neighborhood stop for fuel, coffee,
-            hot breakfast, burgers, pizza, and sweets.
+            hot breakfast, burgers, pizza, and sweets. Locals know it as the
+            place to grab a biscuit on the way to work or a hot plate when it comes lunchtime.
           </p>
           <p>
             You’ll find homemade biscuits and breakfast plates in the morning,
@@ -262,7 +280,7 @@
 
   </div><!-- /.page -->
 
-  <!-- Fullscreen menu modal -->
+  <!-- Fullscreen modal script for menu images -->
   <script>
     (function () {
       const images = document.querySelectorAll('.menu-image');
