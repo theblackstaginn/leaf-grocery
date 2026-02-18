@@ -20,15 +20,18 @@
   --radius-sm: 8px;
   --wrap-width: 1120px;
 
-  /* GLASS TOKENS (UPGRADED: stays transparent, reads NAVY) */
-  --glass-navy-a: rgba(10, 26, 68, 0.22); /* base navy tint */
-  --glass-navy-b: rgba(10, 26, 68, 0.10); /* secondary tint */
-  --glass-sheen: rgba(255, 255, 255, 0.10); /* top sheen */
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-text: rgba(255, 255, 255, 0.92);
-  --glass-muted: rgba(255, 255, 255, 0.80);
-  --glass-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
-  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  /* LEGIBLE GLASS (gray, not navy) */
+  --glass-bg: rgba(28, 32, 40, 0.26);        /* slightly darker so text reads */
+  --glass-bg-2: rgba(28, 32, 40, 0.14);      /* depth gradient */
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+  --glass-title: rgba(255, 255, 255, 0.96);
+  --glass-text: rgba(255, 255, 255, 0.90);
+  --glass-muted: rgba(255, 255, 255, 0.82);
+
+  --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 
   /* HERO FRAME */
   --hero-inset: 1.35rem;
@@ -136,7 +139,7 @@ h2 {
 
 .brand-sub {
   font-size: 0.75rem;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .main-nav {
@@ -220,12 +223,14 @@ h2 {
 .hero h1 {
   font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
   margin: 0 0 0.75rem;
+  text-shadow: var(--text-shadow);
 }
 
 .hero p {
   margin: 0 0 1.5rem;
-  color: #ddd;
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.55;
+  text-shadow: var(--text-shadow);
 }
 
 .hero-actions {
@@ -255,45 +260,6 @@ h2 {
 .hunt-bros-logo img {
   max-width: 180px;
   height: auto;
-}
-
-/* ==============================
-   Buttons (for contact section etc.)
-   ============================== */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.65rem 1.25rem;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  border: 1px solid transparent;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
-    background 0.12s ease-out, color 0.12s ease-out;
-}
-
-.btn-primary {
-  background: var(--red);
-  color: #fff;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.55);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
 }
 
 /* ==============================
@@ -353,30 +319,30 @@ h2 {
 }
 
 /* ==============================
-   NAVY GLASS CARDS (UPGRADED)
+   GLASS CARDS (GRAY + LEGIBLE)
    ============================== */
 
 .menu-card,
 .about-card,
 .contact-card {
-  /* This is the trick: gradient forces NAVY read even when transparent */
   background-image:
-    linear-gradient(180deg, var(--glass-sheen), rgba(255, 255, 255, 0.02)),
-    linear-gradient(135deg, var(--glass-navy-a), var(--glass-navy-b));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    linear-gradient(135deg, var(--glass-bg), var(--glass-bg-2));
   background-color: transparent;
 
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow), var(--glass-inner);
 
-  backdrop-filter: blur(18px) saturate(1.25);
-  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
 }
 
-/* make text readable on glass */
+/* Headings + paragraph contrast on glass */
 .menu-card h2,
 .about-card h2,
 .contact-card h2 {
-  color: var(--glass-text);
+  color: var(--glass-title);
+  text-shadow: var(--text-shadow);
 }
 
 .menu-card p,
@@ -386,20 +352,23 @@ h2 {
 .contact-hours,
 .contact-hours-label,
 .contact-hours li {
-  color: var(--glass-muted);
+  color: var(--glass-text);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
 .contact-hours-label {
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--glass-title);
 }
 
-/* keep links readable on glass */
+/* links on glass */
 .contact-phone a,
 .about-card a,
 .menu-card a {
-  color: rgba(255, 255, 255, 0.92);
-  font-weight: 700;
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 800;
   text-decoration: none;
+  text-shadow: var(--text-shadow);
 }
 
 .contact-phone a:hover,
