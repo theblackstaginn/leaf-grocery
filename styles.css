@@ -20,12 +20,15 @@
   --radius-sm: 8px;
   --wrap-width: 1120px;
 
-  /* GLASS TOKENS (fixed) */
-  --glass-navy: rgba(10, 26, 68, 0.16); /* navy tint, highly transparent */
-  --glass-border: rgba(255, 255, 255, 0.14);
+  /* GLASS TOKENS (UPGRADED: stays transparent, reads NAVY) */
+  --glass-navy-a: rgba(10, 26, 68, 0.22); /* base navy tint */
+  --glass-navy-b: rgba(10, 26, 68, 0.10); /* secondary tint */
+  --glass-sheen: rgba(255, 255, 255, 0.10); /* top sheen */
+  --glass-border: rgba(255, 255, 255, 0.18);
   --glass-text: rgba(255, 255, 255, 0.92);
-  --glass-muted: rgba(255, 255, 255, 0.78);
+  --glass-muted: rgba(255, 255, 255, 0.80);
   --glass-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
   /* HERO FRAME */
   --hero-inset: 1.35rem;
@@ -350,26 +353,23 @@ h2 {
 }
 
 /* ==============================
-   NAVY GLASS CARDS (fixed: actually navy)
+   NAVY GLASS CARDS (UPGRADED)
    ============================== */
 
 .menu-card,
 .about-card,
 .contact-card {
-  /* true navy tint */
-  background-color: var(--glass-navy);
-
-  /* subtle depth without whitening it */
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.18),
-    rgba(0, 0, 0, 0.06)
-  );
+  /* This is the trick: gradient forces NAVY read even when transparent */
+  background-image:
+    linear-gradient(180deg, var(--glass-sheen), rgba(255, 255, 255, 0.02)),
+    linear-gradient(135deg, var(--glass-navy-a), var(--glass-navy-b));
+  background-color: transparent;
 
   border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  box-shadow: var(--glass-shadow), var(--glass-inner);
+
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
 }
 
 /* make text readable on glass */
