@@ -39,8 +39,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: var(--text-main);
-  background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed
-    no-repeat;
+  background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed no-repeat;
   overflow: hidden; /* content scroll handled by .page */
 }
 
@@ -166,7 +165,6 @@ h2 {
 .hero {
   position: relative;
   color: #fff;
-  /* let it breathe more on desktop */
   min-height: 75vh;
   display: flex;
   align-items: center; /* center content vertically */
@@ -176,13 +174,20 @@ h2 {
 
 .hero-bg {
   position: absolute;
-  inset: 0;
+
+  /* inset left/right so it feels framed */
+  top: 0;
+  bottom: 0;
+  left: 3%;
+  right: 3%;
+
+  border-radius: 24px;
+  overflow: hidden;
+
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.78)),
     url("assets-leaf/leaf_hero_clean.PNG") center/cover no-repeat;
+
   filter: saturate(1.05);
-  transform: scale(1.02);
-  background-size: 100% auto;
-  background-position: top center;
 }
 
 .hero-inner {
@@ -337,6 +342,51 @@ h2 {
 }
 
 /* ==============================
+   Navy glass cards (Menu / Cater / About / Contact)
+   ============================== */
+
+.menu-card,
+.about-card,
+.contact-card {
+  background: rgba(10, 26, 68, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f4f6fb;
+}
+
+/* Headings inside glass */
+.menu-card h2,
+.about-card h2,
+.contact-card h2 {
+  color: #ffffff;
+}
+
+/* Body text inside glass */
+.menu-card p,
+.about-card p,
+.contact-card p,
+.contact-card li {
+  color: #e4e8f5;
+}
+
+/* Links in glass */
+.contact-phone a,
+.about-card a,
+.menu-card a,
+.contact-card a {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.contact-phone a:hover,
+.about-card a:hover,
+.menu-card a:hover,
+.contact-card a:hover {
+  color: #ffffff;
+}
+
+/* ==============================
    Menu
    ============================== */
 
@@ -347,7 +397,6 @@ h2 {
 
 .menu-card {
   max-width: 640px;
-  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 1.75rem 1.75rem 1.6rem;
   box-shadow: var(--shadow-soft);
@@ -357,13 +406,11 @@ h2 {
 .menu-card h2 {
   margin-top: 0;
   font-size: 1.6rem;
-  color: var(--navy);
 }
 
 .menu-card p {
   margin: 0;
   line-height: 1.6;
-  color: var(--text-main);
 }
 
 .menu-banner img {
@@ -421,7 +468,6 @@ h2 {
 
 .about-card {
   max-width: 640px;
-  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 1.75rem 1.75rem 1.6rem;
   box-shadow: var(--shadow-soft);
@@ -430,7 +476,6 @@ h2 {
 .about-card h2 {
   margin-top: 0;
   font-size: 1.6rem;
-  color: var(--navy);
 }
 
 .about-card p {
@@ -453,7 +498,6 @@ h2 {
 }
 
 .contact-card {
-  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 1.75rem 1.75rem 1.6rem;
   box-shadow: var(--shadow-soft);
@@ -462,7 +506,6 @@ h2 {
 .contact-card h2 {
   margin-top: 0;
   font-size: 1.6rem;
-  color: var(--navy);
 }
 
 .contact-address {
@@ -474,26 +517,15 @@ h2 {
   margin: 0 0 0.75rem;
 }
 
-.contact-phone a {
-  color: var(--navy);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.contact-phone a:hover {
-  text-decoration: underline;
-}
-
 .contact-hours-label {
   margin: 0 0 0.25rem;
   font-weight: 600;
-  color: var(--navy);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .contact-hours {
   margin: 0 0 1rem;
   padding-left: 1.1rem;
-  color: var(--text-main);
 }
 
 .contact-hours li {
@@ -651,9 +683,11 @@ h2 {
     max-width: 100%;
   }
 
+  /* Keep framed hero on mobile, slightly tighter corners */
   .hero-bg {
-    background-size: 100% auto;
-    background-position: top center;
+    left: 4%;
+    right: 4%;
+    border-radius: 18px;
   }
 
   .photo-card img {
