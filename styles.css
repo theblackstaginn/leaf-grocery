@@ -13,11 +13,24 @@
   --bg-wood: #f3e1c9;
   --text-main: #1a1a1a;
   --text-muted: #555;
+  --card-bg: rgba(255, 255, 255, 0.96);
   --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.25);
   --radius-lg: 18px;
   --radius-md: 12px;
   --radius-sm: 8px;
   --wrap-width: 1120px;
+
+  /* GLASS TOKENS (new) */
+  --glass-navy: rgba(10, 26, 68, 0.18); /* navy but nearly transparent */
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-highlight: rgba(255, 255, 255, 0.10);
+  --glass-text: rgba(255, 255, 255, 0.92);
+  --glass-muted: rgba(255, 255, 255, 0.78);
+  --glass-shadow: 0 18px 44px rgba(0, 0, 0, 0.30);
+
+  /* HERO FRAME (new) */
+  --hero-inset: 1.35rem; /* pulls in left/right */
+  --hero-radius: 22px;   /* rounded hero corners */
 }
 
 *,
@@ -33,15 +46,17 @@ body {
   height: 100%;
 }
 
+/* Body: fixed wood background, content scrolls in .page */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: var(--text-main);
   background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed
     no-repeat;
-  overflow: hidden;
+  overflow: hidden; /* content scroll handled by .page */
 }
 
+/* Layout container for max width */
 .wrap {
   width: 100%;
   max-width: var(--wrap-width);
@@ -106,6 +121,56 @@ h2 {
   display: block;
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-main {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.brand-sub {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.main-nav a {
+  color: #f8f8f8;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 0.15rem;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--red);
+  transition: width 0.18s ease-out;
+}
+
+.main-nav a:hover {
+  transform: translateY(-2px);
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+}
+
 /* ==============================
    Hero
    ============================== */
@@ -120,88 +185,449 @@ h2 {
   overflow: visible;
 }
 
+/* HERO BG now becomes a rounded "panel" that is inset from sides */
 .hero-bg {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,.65), rgba(0,0,0,.78)),
+
+  /* pulls in left and right + rounds corners (requested) */
+  top: var(--hero-inset);
+  bottom: var(--hero-inset);
+  left: var(--hero-inset);
+  right: var(--hero-inset);
+
+  border-radius: var(--hero-radius);
+  overflow: hidden;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.78)),
     url("assets-leaf/leaf_hero_clean.PNG") center/cover no-repeat;
-  border-radius: 28px;
-  margin: 0 4%;
-  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+
+  filter: saturate(1.05);
+
+  /* keep the subtle "depth" but don't expand past the rounded frame */
+  transform: none;
+
+  /* shadow so it looks framed, not chopped */
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* give text room so it doesn't collide with the inset hero frame */
+  padding: 4.5rem 0 5.25rem;
+}
+
+.hero-content {
+  max-width: 32rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
+  margin: 0 0 0.75rem;
+}
+
+.hero p {
+  margin: 0 0 1.5rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* image-based hero buttons */
+.hero-btn-img {
+  display: inline-flex;
+}
+
+.hero-btn-img img {
+  display: block;
+  max-width: 210px;
+  height: auto;
+}
+
+/* Hunt Bros logo above banner */
+.hunt-bros-logo {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.hunt-bros-logo img {
+  max-width: 180px;
+  height: auto;
 }
 
 /* ==============================
-   NAVY GLASS PANELS (UPDATED)
+   Buttons (for contact section etc.)
    ============================== */
 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+    background 0.12s ease-out, color 0.12s ease-out;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.55);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ==============================
+   Image button hover (Hero + Contact)
+   ============================== */
+.hero-btn-img img,
+.contact-call-img img {
+  transition: transform 0.18s ease, filter 0.18s ease;
+  transform: translateY(0) scale(1);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-btn-img:hover img,
+  .contact-call-img:hover img {
+    transform: translateY(-3px) scale(1.03);
+    filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  }
+
+  .hero-btn-img:active img,
+  .contact-call-img:active img {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+/* ==============================
+   Sections
+   ============================== */
+
+.section {
+  padding: 3.5rem 0;
+}
+
+/* Make all scrollable sections transparent so wood shows through */
+.section-menu,
+.section-photos,
+.section-about,
+.section-contact,
+.section-cater {
+  background: transparent;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-head h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.7rem;
+  color: var(--navy);
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* ==============================
+   NAVY GLASS CARDS (new, applies to the four panels you named)
+   ============================== */
 .menu-card,
 .about-card,
 .contact-card {
-  max-width: 640px;
-  border-radius: 22px;
-  padding: 1.75rem 1.75rem 1.6rem;
-  text-align: center;
+  background: var(--glass-navy);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 
-  /* VERY TRANSPARENT NAVY TINT */
-  background: linear-gradient(
+  /* subtle realistic glass "sheen" */
+  background-image: linear-gradient(
     to bottom,
-    rgba(10, 26, 68, 0.20),
-    rgba(10, 26, 68, 0.16)
+    rgba(255, 255, 255, 0.10),
+    rgba(255, 255, 255, 0.02)
   );
-
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-
-  border: 1px solid rgba(255,255,255,0.10);
-
-  box-shadow:
-    0 24px 60px rgba(0,0,0,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.20);
-
-  color: #f4f6fb;
-  position: relative;
-  overflow: hidden;
 }
 
-/* Glass highlight sheen */
-.menu-card::before,
-.about-card::before,
-.contact-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.18),
-    transparent 40%
-  );
-  pointer-events: none;
-}
-
-/* White glass text */
+/* make text readable on glass */
 .menu-card h2,
 .about-card h2,
 .contact-card h2 {
-  color: #ffffff;
-  text-shadow: 0 3px 10px rgba(0,0,0,0.45);
+  color: var(--glass-text);
 }
 
 .menu-card p,
 .about-card p,
 .contact-card p,
-.contact-card li {
-  color: rgba(255,255,255,0.95);
+.contact-address,
+.contact-hours,
+.contact-hours-label {
+  color: var(--glass-muted);
+}
+
+.contact-hours-label {
+  font-weight: 600;
+}
+
+/* keep links readable on glass */
+.contact-phone a,
+.about-card a,
+.menu-card a {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contact-phone a:hover,
+.about-card a:hover,
+.menu-card a:hover {
+  text-decoration: underline;
 }
 
 /* ==============================
-   Contact map
+   Menu
    ============================== */
 
-.contact-map {
-  border-radius: 22px;
+.menu-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-card {
+  max-width: 640px;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.75rem 1.6rem;
+  text-align: center;
+}
+
+.menu-card p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.menu-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin-top: 1.25rem;
+}
+
+/* Individual menu sheets (breakfast, lunch, BBQ) */
+.menu-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin-top: 1.25rem;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+}
+
+/* ==============================
+   Photo grid
+   ============================== */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.photo-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  display: flex;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+/* ==============================
+   About / Cater cards
+   ============================== */
+
+.about-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.about-card {
+  max-width: 640px;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.75rem 1.6rem;
+}
+
+.about-card p {
+  margin: 0 0 0.9rem;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Contact
+   ============================== */
+
+.section-contact {
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.contact-card {
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.75rem 1.6rem;
+}
+
+.contact-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
+.contact-address {
+  margin: 0 0 0.5rem;
+  line-height: 1.5;
+}
+
+.contact-phone {
+  margin: 0 0 0.75rem;
+}
+
+.contact-phone a {
+  text-decoration: none;
+}
+
+.contact-phone a:hover {
+  text-decoration: underline;
+}
+
+.contact-hours {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+}
+
+.contact-hours li {
+  margin-bottom: 0.15rem;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* image-based contact call button */
+.contact-call-img {
+  display: inline-flex;
+}
+
+.contact-call-img img {
+  display: block;
+  max-width: 220px;
+  height: auto;
+}
+
+.btn-contact {
+  min-width: 130px;
+}
+
+.contact-map {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  background: transparent;
+}
+
+.map-embed-wrapper {
+  position: relative;
+  padding-top: 65%;
+}
+
+.map-embed-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ==============================
+   Fullscreen menu modal
+   ============================== */
+
+.menu-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.menu-modal img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  background: #fff;
+}
+
+.menu-modal-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  background: none;
+  border: none;
 }
 
 /* ==============================
@@ -220,19 +646,80 @@ h2 {
   font-size: 0.85rem;
 }
 
+.footer-main {
+  margin: 0 0 0.2rem;
+  font-weight: 500;
+}
+
+.footer-sub {
+  margin: 0;
+  color: #9ca3af;
+}
+
 /* ==============================
-   Responsive
+   Responsive tweaks
    ============================== */
 
 @media (max-width: 900px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .contact-inner {
     grid-template-columns: 1fr;
+  }
+
+  .contact-map {
+    order: -1;
+  }
+
+  /* hero inset a bit smaller on medium screens */
+  :root {
+    --hero-inset: 1rem;
+    --hero-radius: 20px;
   }
 }
 
 @media (max-width: 720px) {
-  .hero-bg {
-    margin: 0 3%;
-    border-radius: 20px;
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .brand-mark {
+    width: 100px;
+  }
+
+  .main-nav {
+    gap: 0.75rem;
+  }
+
+  .hero {
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .hero-inner {
+    padding-top: 4.25rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  /* hero inset smaller on mobile so it doesn't feel cramped */
+  :root {
+    --hero-inset: 0.85rem;
+    --hero-radius: 18px;
+  }
+
+  .photo-card img {
+    height: 180px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
   }
 }
