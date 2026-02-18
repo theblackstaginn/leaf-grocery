@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theblackstaginn.github.io/leaf-grocery/sitemap.xml
