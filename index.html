@@ -9,9 +9,82 @@
     content="Leaf Grocery &amp; Deli – hot breakfast, burgers, sandwiches, pizza, and grab-and-go sweets in Cleveland, Georgia."
   />
 
+  <!-- Canonical + robots -->
+  <link rel="canonical" href="https://leafdeli.com/" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0a1a44" />
+
+  <!-- Preconnect (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <!-- Icons: use the ROOT logo file exactly as-is -->
   <link rel="icon" href="leaf-logo.PNG" />
   <link rel="apple-touch-icon" href="leaf-logo.PNG" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Leaf Grocery &amp; Deli" />
+  <meta property="og:title" content="Leaf Grocery &amp; Deli – Cleveland, GA" />
+  <meta property="og:description" content="Hot breakfast, burgers, sandwiches, pizza, and grab-and-go sweets in Cleveland, Georgia." />
+  <meta property="og:url" content="https://leafdeli.com/" />
+  <meta property="og:image" content="https://leafdeli.com/leaf-logo.PNG" />
+  <meta property="og:image:alt" content="Leaf Grocery &amp; Deli logo" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Leaf Grocery &amp; Deli – Cleveland, GA" />
+  <meta name="twitter:description" content="Hot breakfast, burgers, sandwiches, pizza, and grab-and-go sweets in Cleveland, Georgia." />
+  <meta name="twitter:image" content="https://leafdeli.com/leaf-logo.PNG" />
+
+  <!-- Structured Data: LocalBusiness + WebSite + WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://leafdeli.com/#business",
+        "name": "Leaf Grocery & Deli",
+        "url": "https://leafdeli.com/",
+        "image": "https://leafdeli.com/leaf-logo.PNG",
+        "logo": "https://leafdeli.com/leaf-logo.PNG",
+        "telephone": "+1-706-219-1390",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "6081 Highway 115 N",
+          "addressLocality": "Cleveland",
+          "addressRegion": "GA",
+          "addressCountry": "US"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Cleveland"
+        },
+        "sameAs": [
+          "https://www.facebook.com/LeafGroceryandDeli"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://leafdeli.com/#website",
+        "url": "https://leafdeli.com/",
+        "name": "Leaf Grocery & Deli"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://leafdeli.com/#webpage",
+        "url": "https://leafdeli.com/",
+        "name": "Leaf Grocery & Deli – Cleveland, GA",
+        "description": "Leaf Grocery & Deli – hot breakfast, burgers, sandwiches, pizza, and grab-and-go sweets in Cleveland, Georgia.",
+        "isPartOf": { "@id": "https://leafdeli.com/#website" },
+        "about": { "@id": "https://leafdeli.com/#business" }
+      }
+    ]
+  }
+  </script>
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -33,7 +106,7 @@
             <span class="brand-sub">Cleveland, Georgia</span>
           </div>
         </div>
-        <nav class="main-nav">
+        <nav class="main-nav" aria-label="Primary">
           <a href="#menu">Menu</a>
           <a href="#photos">Photos</a>
           <a href="#cater">We Cater</a>
@@ -75,6 +148,7 @@
               class="hero-btn-img"
               target="_blank"
               rel="noopener"
+              aria-label="Leaf Grocery and Deli on Facebook"
             >
               <img
                 src="assets-leaf/facebook-button.png"
@@ -106,6 +180,8 @@
             <img
               src="assets-leaf/hunts-bros.png"
               alt="Hunt Brothers Pizza, wings, and tenders"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -114,16 +190,22 @@
             src="assets-leaf/brekkie-menu.png"
             alt="Leaf Grocery &amp; Deli – breakfast menu"
             class="menu-image"
+            loading="lazy"
+            decoding="async"
           />
           <img
             src="assets-leaf/lunch-menu.png"
             alt="Leaf Grocery &amp; Deli – lunch menu"
             class="menu-image"
+            loading="lazy"
+            decoding="async"
           />
           <img
             src="assets-leaf/bbq-menu.png"
             alt="Stewby the Pig’s Friday &amp; Saturday BBQ dinner menu"
             class="menu-image"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -139,13 +221,15 @@
 
         <div class="photo-grid">
           <article class="photo-card">
-            <img src="assets-leaf/burger.PNG" alt="Cheeseburger with fries" />
+            <img src="assets-leaf/burger.PNG" alt="Cheeseburger with fries" loading="lazy" decoding="async" />
           </article>
 
           <article class="photo-card">
             <img
               src="assets-leaf/bbq-burger.PNG"
               alt="BBQ bacon burger with onion rings"
+              loading="lazy"
+              decoding="async"
             />
           </article>
 
@@ -153,6 +237,8 @@
             <img
               src="assets-leaf/bisquits.PNG"
               alt="Tray of golden buttermilk biscuits"
+              loading="lazy"
+              decoding="async"
             />
           </article>
 
@@ -160,6 +246,8 @@
             <img
               src="assets-leaf/cookie-1.PNG"
               alt="Birthday cake celebration cookie"
+              loading="lazy"
+              decoding="async"
             />
           </article>
 
@@ -167,6 +255,8 @@
             <img
               src="assets-leaf/cookie-2.PNG"
               alt="Butterfinger cookie in clamshell"
+              loading="lazy"
+              decoding="async"
             />
           </article>
 
@@ -174,17 +264,21 @@
             <img
               src="assets-leaf/quesadilla.PNG"
               alt="Chicken quesadilla with fries"
+              loading="lazy"
+              decoding="async"
             />
           </article>
 
           <article class="photo-card">
-            <img src="assets-leaf/ribs.PNG" alt="Pan of smoked ribs" />
+            <img src="assets-leaf/ribs.PNG" alt="Pan of smoked ribs" loading="lazy" decoding="async" />
           </article>
 
           <article class="photo-card">
             <img
               src="assets-leaf/cater-1.PNG"
               alt="Catering trays with appetizers"
+              loading="lazy"
+              decoding="async"
             />
           </article>
 
@@ -192,6 +286,8 @@
             <img
               src="assets-leaf/cater-2.PNG"
               alt="Close-up of appetizer trays"
+              loading="lazy"
+              decoding="async"
             />
           </article>
         </div>
