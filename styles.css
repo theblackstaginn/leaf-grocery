@@ -20,17 +20,16 @@
   --radius-sm: 8px;
   --wrap-width: 1120px;
 
-  /* GLASS TOKENS (new) */
-  --glass-navy: rgba(10, 26, 68, 0.18); /* navy but nearly transparent */
+  /* GLASS TOKENS (fixed) */
+  --glass-navy: rgba(10, 26, 68, 0.16); /* navy tint, highly transparent */
   --glass-border: rgba(255, 255, 255, 0.14);
-  --glass-highlight: rgba(255, 255, 255, 0.10);
   --glass-text: rgba(255, 255, 255, 0.92);
   --glass-muted: rgba(255, 255, 255, 0.78);
-  --glass-shadow: 0 18px 44px rgba(0, 0, 0, 0.30);
+  --glass-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
 
-  /* HERO FRAME (new) */
-  --hero-inset: 1.35rem; /* pulls in left/right */
-  --hero-radius: 22px;   /* rounded hero corners */
+  /* HERO FRAME */
+  --hero-inset: 1.35rem;
+  --hero-radius: 22px;
 }
 
 *,
@@ -51,9 +50,8 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: var(--text-main);
-  background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed
-    no-repeat;
-  overflow: hidden; /* content scroll handled by .page */
+  background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed no-repeat;
+  overflow: hidden;
 }
 
 /* Layout container for max width */
@@ -185,16 +183,12 @@ h2 {
   overflow: visible;
 }
 
-/* HERO BG now becomes a rounded "panel" that is inset from sides */
 .hero-bg {
   position: absolute;
-
-  /* pulls in left and right + rounds corners (requested) */
   top: var(--hero-inset);
   bottom: var(--hero-inset);
   left: var(--hero-inset);
   right: var(--hero-inset);
-
   border-radius: var(--hero-radius);
   overflow: hidden;
 
@@ -202,11 +196,7 @@ h2 {
     url("assets-leaf/leaf_hero_clean.PNG") center/cover no-repeat;
 
   filter: saturate(1.05);
-
-  /* keep the subtle "depth" but don't expand past the rounded frame */
   transform: none;
-
-  /* shadow so it looks framed, not chopped */
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
 }
 
@@ -216,8 +206,6 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* give text room so it doesn't collide with the inset hero frame */
   padding: 4.5rem 0 5.25rem;
 }
 
@@ -245,7 +233,6 @@ h2 {
   margin-top: 0.5rem;
 }
 
-/* image-based hero buttons */
 .hero-btn-img {
   display: inline-flex;
 }
@@ -338,7 +325,6 @@ h2 {
   padding: 3.5rem 0;
 }
 
-/* Make all scrollable sections transparent so wood shows through */
 .section-menu,
 .section-photos,
 .section-about,
@@ -364,23 +350,26 @@ h2 {
 }
 
 /* ==============================
-   NAVY GLASS CARDS (new, applies to the four panels you named)
+   NAVY GLASS CARDS (fixed: actually navy)
    ============================== */
+
 .menu-card,
 .about-card,
 .contact-card {
-  background: var(--glass-navy);
+  /* true navy tint */
+  background-color: var(--glass-navy);
+
+  /* subtle depth without whitening it */
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18),
+    rgba(0, 0, 0, 0.06)
+  );
+
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
-
-  /* subtle realistic glass "sheen" */
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.10),
-    rgba(255, 255, 255, 0.02)
-  );
 }
 
 /* make text readable on glass */
@@ -395,7 +384,8 @@ h2 {
 .contact-card p,
 .contact-address,
 .contact-hours,
-.contact-hours-label {
+.contact-hours-label,
+.contact-hours li {
   color: var(--glass-muted);
 }
 
@@ -434,6 +424,11 @@ h2 {
   text-align: center;
 }
 
+.menu-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
 .menu-card p {
   margin: 0;
   line-height: 1.6;
@@ -447,7 +442,6 @@ h2 {
   margin-top: 1.25rem;
 }
 
-/* Individual menu sheets (breakfast, lunch, BBQ) */
 .menu-image {
   display: block;
   width: 100%;
@@ -498,6 +492,11 @@ h2 {
   padding: 1.75rem 1.75rem 1.6rem;
 }
 
+.about-card h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+
 .about-card p {
   margin: 0 0 0.9rem;
   line-height: 1.6;
@@ -506,9 +505,6 @@ h2 {
 /* ==============================
    Contact
    ============================== */
-
-.section-contact {
-}
 
 .contact-inner {
   display: grid;
@@ -536,14 +532,6 @@ h2 {
   margin: 0 0 0.75rem;
 }
 
-.contact-phone a {
-  text-decoration: none;
-}
-
-.contact-phone a:hover {
-  text-decoration: underline;
-}
-
 .contact-hours {
   margin: 0 0 1rem;
   padding-left: 1.1rem;
@@ -560,7 +548,6 @@ h2 {
   justify-content: center;
 }
 
-/* image-based contact call button */
 .contact-call-img {
   display: inline-flex;
 }
@@ -569,10 +556,6 @@ h2 {
   display: block;
   max-width: 220px;
   height: auto;
-}
-
-.btn-contact {
-  min-width: 130px;
 }
 
 .contact-map {
@@ -673,7 +656,6 @@ h2 {
     order: -1;
   }
 
-  /* hero inset a bit smaller on medium screens */
   :root {
     --hero-inset: 1rem;
     --hero-radius: 20px;
@@ -709,7 +691,6 @@ h2 {
     max-width: 100%;
   }
 
-  /* hero inset smaller on mobile so it doesn't feel cramped */
   :root {
     --hero-inset: 0.85rem;
     --hero-radius: 18px;
