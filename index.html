@@ -86,9 +86,14 @@
   }
   </script>
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" id="site-styles" href="styles.css" />
 </head>
 <body>
+
+  <div class="ptr-indicator" id="ptrIndicator" aria-live="polite" aria-hidden="true">
+    <span class="ptr-arrow" aria-hidden="true">↓</span>
+    <span class="ptr-text">Pull to refresh</span>
+  </div>
 
   <div class="page">
 
@@ -392,6 +397,151 @@
     </footer>
 
   </div><!-- /.page -->
+
+  <!-- Pull-to-refresh + cache-busting refresh -->
+  <script>
+    (function () {
+      const page = document.querySelector('.page');
+      const indicator = document.getElementById('ptrIndicator');
+      const indicatorText = indicator ? indicator.querySelector('.ptr-text') : null;
+      const stylesheet = document.getElementById('site-styles');
+      const refreshKey = new URLSearchParams(window.location.search).get('_leaf');
+
+      function appendVersion(rawUrl, version) {
+        if (!rawUrl || /^(?:https?:|data:|blob:|tel:|mailto:|#)/i.test(rawUrl)) return rawUrl;
+        const hashIndex = rawUrl.indexOf('#');
+        const hash = hashIndex >= 0 ? rawUrl.slice(hashIndex) : '';
+        const withoutHash = hashIndex >= 0 ? rawUrl.slice(0, hashIndex) : rawUrl;
+        const queryIndex = withoutHash.indexOf('?');
+        const base = queryIndex >= 0 ? withoutHash.slice(0, queryIndex) : withoutHash;
+        const params = new URLSearchParams(queryIndex >= 0 ? withoutHash.slice(queryIndex + 1) : '');
+        params.set('v', version);
+        return base + '?' + params.toString() + hash;
+      }
+
+      if (refreshKey) {
+        const version = encodeURIComponent(refreshKey);
+
+        if (stylesheet) {
+          stylesheet.href = appendVersion(stylesheet.getAttribute('href'), version);
+        }
+
+        document.querySelectorAll('img[src]').forEach((img) => {
+          img.src = appendVersion(img.getAttribute('src'), version);
+        });
+
+        document.querySelectorAll('link[rel~="icon"], link[rel="apple-touch-icon"]').forEach((link) => {
+          link.href = appendVersion(link.getAttribute('href'), version);
+        });
+
+        document.documentElement.style.setProperty(
+          '--leaf-bg-image',
+          'url("new-leaf-assets/leaf-bg.webp?v=' + version + '")'
+        );
+        document.documentElement.style.setProperty(
+          '--leaf-hero-image',
+          'url("new-leaf-assets/leaf_hero_clean.webp?v=' + version + '")'
+        );
+
+        const cleanUrl = new URL(window.location.href);
+        cleanUrl.searchParams.delete('_leaf');
+        history.replaceState(null, '', cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+      }
+
+      if (!page || !indicator || !indicatorText || !('ontouchstart' in window)) return;
+
+      const threshold = 72;
+      const maxPull = 112;
+      let startY = 0;
+      let pullDistance = 0;
+      let tracking = false;
+      let refreshing = false;
+
+      function setIndicator(state) {
+        indicator.classList.toggle('is-visible', state !== 'hidden');
+        indicator.classList.toggle('is-ready', state === 'ready');
+        indicator.classList.toggle('is-refreshing', state === 'refreshing');
+        indicator.setAttribute('aria-hidden', state === 'hidden' ? 'true' : 'false');
+
+        if (state === 'ready') indicatorText.textContent = 'Release to refresh';
+        else if (state === 'refreshing') indicatorText.textContent = 'Refreshing…';
+        else indicatorText.textContent = 'Pull to refresh';
+      }
+
+      function settlePage() {
+        page.classList.remove('ptr-pulling');
+        page.classList.add('ptr-settling');
+        page.style.transform = '';
+
+        window.setTimeout(() => {
+          page.classList.remove('ptr-settling');
+        }, 220);
+      }
+
+      function forceFreshReload() {
+        const refreshUrl = new URL(window.location.href);
+        refreshUrl.searchParams.set('_leaf', Date.now().toString());
+        window.location.replace(refreshUrl.toString());
+      }
+
+      page.addEventListener('touchstart', (event) => {
+        if (refreshing || page.scrollTop > 0 || event.touches.length !== 1) return;
+        startY = event.touches[0].clientY;
+        pullDistance = 0;
+        tracking = true;
+      }, { passive: true });
+
+      page.addEventListener('touchmove', (event) => {
+        if (!tracking || refreshing || event.touches.length !== 1) return;
+
+        if (page.scrollTop > 0) {
+          tracking = false;
+          settlePage();
+          setIndicator('hidden');
+          return;
+        }
+
+        const delta = event.touches[0].clientY - startY;
+        if (delta <= 0) return;
+
+        event.preventDefault();
+
+        pullDistance = Math.min(maxPull, delta * 0.55);
+        page.classList.add('ptr-pulling');
+        page.style.transform = 'translateY(' + pullDistance + 'px)';
+
+        setIndicator(pullDistance >= threshold ? 'ready' : 'pulling');
+      }, { passive: false });
+
+      page.addEventListener('touchend', () => {
+        if (!tracking || refreshing) return;
+        tracking = false;
+
+        if (pullDistance >= threshold) {
+          refreshing = true;
+          setIndicator('refreshing');
+          page.classList.remove('ptr-pulling');
+          page.classList.add('ptr-settling');
+          page.style.transform = 'translateY(56px)';
+
+          window.setTimeout(forceFreshReload, 180);
+          return;
+        }
+
+        pullDistance = 0;
+        settlePage();
+        setIndicator('hidden');
+      }, { passive: true });
+
+      page.addEventListener('touchcancel', () => {
+        if (refreshing) return;
+        tracking = false;
+        pullDistance = 0;
+        settlePage();
+        setIndicator('hidden');
+      }, { passive: true });
+    })();
+  </script>
 
   <!-- Fullscreen modal script for menu images -->
   <script>
