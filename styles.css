@@ -1471,3 +1471,113 @@ body {
     line-height: 1.4;
   }
 }
+
+
+/* ==============================
+   LEAF MENU "DANCE" — STAG-MENU PATTERN
+   ============================== */
+
+.menu-sheets {
+  display: flex;
+  grid-template-columns: none;
+  gap: 1.4rem;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 1rem 0.2rem 1.2rem;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0.2rem;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.menu-sheets::-webkit-scrollbar {
+  display: none;
+}
+
+.posted-menu {
+  flex: 0 0 calc((100% - 2.8rem) / 3);
+  min-width: 0;
+  grid-column: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.posted-menu .menu-image {
+  transition:
+    transform 0.22s ease,
+    filter 0.22s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .posted-menu:hover .menu-image {
+    transform: translateY(-3px) scale(1.018);
+    filter:
+      drop-shadow(0 16px 24px rgba(0, 0, 0, 0.24))
+      drop-shadow(0 5px 8px rgba(0, 0, 0, 0.16));
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-sheets {
+    display: flex;
+    grid-template-columns: none;
+    gap: 1rem;
+  }
+
+  .posted-menu,
+  .posted-menu:nth-child(3) {
+    flex: 0 0 calc((100% - 1rem) / 2.15);
+    max-width: none;
+    grid-column: auto;
+    justify-self: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .menu-sheets {
+    display: flex;
+    grid-template-columns: none;
+    gap: 0.8rem;
+    margin-left: -0.15rem;
+    margin-right: -0.15rem;
+    padding-left: 0.15rem;
+    padding-right: 0.15rem;
+    scroll-padding-inline: 0.15rem;
+  }
+
+  .posted-menu,
+  .posted-menu:nth-child(1),
+  .posted-menu:nth-child(2),
+  .posted-menu:nth-child(3) {
+    flex: 0 0 86%;
+    max-width: none;
+    grid-column: auto;
+    transform: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .posted-menu,
+  .posted-menu:nth-child(1),
+  .posted-menu:nth-child(2),
+  .posted-menu:nth-child(3) {
+    flex-basis: 85%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-sheets {
+    scroll-behavior: auto;
+  }
+
+  .posted-menu .menu-image {
+    transition: none;
+  }
+
+  .posted-menu:hover .menu-image {
+    transform: none;
+    filter: none;
+  }
+}
