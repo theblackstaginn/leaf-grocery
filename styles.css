@@ -1581,3 +1581,96 @@ body {
     filter: none;
   }
 }
+
+
+/* ==============================
+   LEAF PHOTO GALLERY — FULL-FRAME MASONRY
+   Keep the staggered look without cropping the food.
+   ============================== */
+
+.photo-grid {
+  display: block;
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+.photo-card,
+.photo-card:nth-child(n) {
+  display: block;
+  width: 100%;
+  margin: 0 0 1rem;
+  break-inside: avoid;
+  grid-column: auto;
+  grid-row: auto;
+  min-height: 0;
+}
+
+.photo-card:first-child {
+  column-span: all;
+  margin-bottom: 1rem;
+}
+
+.photo-card img,
+.photo-card:nth-child(n) img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .photo-card:hover img {
+    transform: scale(1.018);
+  }
+}
+
+@media (max-width: 900px) {
+  .photo-grid {
+    display: block;
+    column-count: 2;
+    column-gap: 0.8rem;
+  }
+
+  .photo-card,
+  .photo-card:nth-child(n) {
+    min-height: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .photo-card:first-child {
+    column-span: all;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .photo-grid {
+    display: block;
+    column-count: 2;
+    column-gap: 0.65rem;
+  }
+
+  .photo-card,
+  .photo-card:nth-child(n) {
+    min-height: 0;
+    margin-bottom: 0.65rem;
+  }
+
+  .photo-card:first-child {
+    column-span: all;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .photo-grid {
+    column-gap: 0.55rem;
+  }
+
+  .photo-card,
+  .photo-card:nth-child(n) {
+    margin-bottom: 0.55rem;
+  }
+}
