@@ -56,7 +56,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: var(--text-main);
-  background: #e7dccb url("assets-leaf/leaf-bg.PNG") center/cover fixed no-repeat;
+  background: #e7dccb url("new-leaf-assets/leaf-bg.webp") center/cover fixed no-repeat;
   overflow: hidden;
 }
 
@@ -199,7 +199,7 @@ h2 {
   overflow: hidden;
 
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.78)),
-    url("assets-leaf/leaf_hero_clean.PNG") center/cover no-repeat;
+    url("new-leaf-assets/leaf_hero_clean.webp") center/cover no-repeat;
 
   filter: saturate(1.05);
   transform: none;
