@@ -376,6 +376,16 @@ p {
   gap: 0.55rem;
 }
 
+.hero-action-note {
+  margin: 0.6rem auto 0;
+  max-width: 34rem;
+  color: rgba(241, 209, 170, 0.92);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+}
+
 .hero-btn-img,
 .contact-call-img {
   display: inline-flex;
@@ -1100,6 +1110,11 @@ p {
 
   .hero-actions {
     gap: 0.2rem;
+  }
+
+  .hero-action-note {
+    margin-top: 0.5rem;
+    font-size: 0.76rem;
   }
 
   .hero-btn-img img {
