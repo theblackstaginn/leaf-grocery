@@ -1734,3 +1734,36 @@ body {
     border-radius: 20px;
   }
 }
+
+
+/* ==============================
+   LEAF MENU SWIPE — SMOOTH NATIVE RAIL
+   Match Stag-menu mobile mechanics: free momentum, no forced snap.
+   ============================== */
+
+.menu-sheets {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: none;
+  scroll-padding-inline: 0;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.posted-menu,
+.posted-menu:nth-child(1),
+.posted-menu:nth-child(2),
+.posted-menu:nth-child(3) {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
+
+@media (max-width: 720px) {
+  .menu-sheets {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: none;
+    scroll-padding-inline: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+}
