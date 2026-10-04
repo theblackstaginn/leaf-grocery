@@ -1798,7 +1798,9 @@ body {
     justify-content: space-between;
     gap: 0.65rem;
     padding-top: 0.25rem;
+    padding-right: 0.85rem;
     padding-bottom: 0.25rem;
+    padding-left: 0.85rem;
   }
 
   .brand {
