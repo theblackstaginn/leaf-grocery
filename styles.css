@@ -1896,29 +1896,36 @@ body {
   }
 
   .burger-cheese {
-    top: 9px;
-    width: 27px;
-    height: 4px;
+    top: 10px;
+    width: 28px;
+    height: 2px;
+    border-radius: 1px;
     background: #f3c542;
-    clip-path: polygon(0 0, 100% 0, 82% 100%, 57% 58%, 34% 100%, 12% 58%);
-    filter: drop-shadow(0 1px 0 rgba(0,0,0,0.18));
+    clip-path: none;
+    filter: none;
   }
 
   .burger-patty {
-    top: 13px;
-    width: 27px;
-    height: 6px;
-    border-radius: 7px;
+    top: 14px;
+    width: 28px;
+    height: 4px;
+    border-radius: 2px;
     background:
       linear-gradient(180deg, #704227, #4f2d1c);
-    border: 1px solid rgba(36,18,10,0.45);
+    border: 0;
     box-shadow: inset 0 1px rgba(255,255,255,0.06);
   }
 
   .burger-bun-bottom {
-    bottom: 0;
-    height: 7px;
-    border-radius: 4px 4px 11px 11px;
+    top: 21px;
+    bottom: auto;
+    width: 28px;
+    height: 4px;
+    border-radius: 1px;
+    background:
+      linear-gradient(180deg, #df9d53 0%, #c97d37 100%);
+    border: 0;
+    box-shadow: inset 0 1px rgba(255,255,255,0.16);
   }
 
   .burger-label {
