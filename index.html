@@ -101,17 +101,37 @@
     <header class="site-header">
       <div class="wrap header-inner">
         <div class="brand">
-          <img
-            src="leaf-logo.PNG"
-            alt="Leaf Grocery and Deli"
-            class="brand-mark"
-          />
+          <span class="brand-mark-crop">
+            <img
+              src="leaf-logo.PNG"
+              alt="Leaf Grocery and Deli"
+              class="brand-mark"
+            />
+          </span>
           <div class="brand-text">
             <span class="brand-main">Leaf Grocery &amp; Deli</span>
             <span class="brand-sub">Cleveland, Georgia</span>
           </div>
         </div>
-        <nav class="main-nav" aria-label="Primary">
+
+        <button
+          class="burger-toggle"
+          id="burgerToggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mainNav"
+          aria-label="Open navigation menu"
+        >
+          <span class="burger-icon" aria-hidden="true">
+            <span class="burger-bun burger-bun-top"></span>
+            <span class="burger-cheese"></span>
+            <span class="burger-patty"></span>
+            <span class="burger-bun burger-bun-bottom"></span>
+          </span>
+          <span class="burger-label">Menu</span>
+        </button>
+
+        <nav class="main-nav" id="mainNav" aria-label="Primary">
           <a href="#menu">Menu</a>
           <a href="#photos">Photos</a>
           <a href="#cater">We Cater</a>
@@ -412,6 +432,54 @@
     </footer>
 
   </div><!-- /.page -->
+
+  <!-- Compact mobile burger navigation -->
+  <script>
+    (function () {
+      const toggle = document.getElementById('burgerToggle');
+      const nav = document.getElementById('mainNav');
+      const page = document.querySelector('.page');
+
+      if (!toggle || !nav) return;
+
+      function closeMenu() {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        nav.classList.remove('is-open');
+      }
+
+      function openMenu() {
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Close navigation menu');
+        nav.classList.add('is-open');
+      }
+
+      toggle.addEventListener('click', () => {
+        if (nav.classList.contains('is-open')) closeMenu();
+        else openMenu();
+      });
+
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!nav.classList.contains('is-open')) return;
+        if (nav.contains(event.target) || toggle.contains(event.target)) return;
+        closeMenu();
+      });
+
+      if (page) {
+        page.addEventListener('scroll', () => {
+          if (nav.classList.contains('is-open')) closeMenu();
+        }, { passive: true });
+      }
+    })();
+  </script>
 
   <!-- Pull-to-refresh + cache-busting refresh -->
   <script>
