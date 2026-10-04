@@ -487,6 +487,7 @@ p {
   display: inline-block;
   max-width: 155px;
   height: auto;
+  border-radius: 14px;
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.24));
 }
 
