@@ -2012,3 +2012,72 @@ body {
     padding-right: 0.45rem;
   }
 }
+
+
+/* ==============================
+   CATER / ABOUT FLOW HARD RESET
+   Prevent iOS glass-card stacking between sibling sections.
+   ============================== */
+
+.section-cater,
+.section-about {
+  position: relative;
+  display: flow-root;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  transform: none;
+  isolation: isolate;
+  z-index: 0;
+}
+
+.section-cater {
+  padding: 3.25rem 0;
+}
+
+.section-about {
+  padding: 3.25rem 0 4rem;
+}
+
+.section-cater .about-inner,
+.section-about .about-inner {
+  position: static;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transform: none;
+}
+
+.section-cater .about-card,
+.section-about .about-card {
+  position: static;
+  z-index: auto;
+  transform: none;
+  margin: 0 auto;
+}
+
+.section-cater + .section-about {
+  margin-top: 0;
+}
+
+@media (max-width: 720px) {
+  .section-cater {
+    padding: 2.75rem 0;
+  }
+
+  .section-about {
+    padding: 2.75rem 0 3.5rem;
+  }
+
+  .section-cater .about-inner,
+  .section-about .about-inner {
+    position: static;
+  }
+
+  .section-cater .about-card,
+  .section-about .about-card {
+    position: static;
+    z-index: auto;
+    margin: 0 auto;
+  }
+}
