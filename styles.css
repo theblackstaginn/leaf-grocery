@@ -1069,102 +1069,6 @@ body {
   }
 }
 
-.section-cater {
-  min-height: 560px;
-  display: grid;
-  align-items: center;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.section-cater::before {
-  content: "";
-  position: absolute;
-  inset: 7% 6%;
-  z-index: -3;
-  border-radius: 34px;
-  background: rgba(25,20,17,0.12);
-  border: 1px solid rgba(87,54,35,0.12);
-}
-
-.cater-photo {
-  position: absolute;
-  z-index: -2;
-  width: min(36vw, 420px);
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  border-radius: 24px;
-  box-shadow: 0 22px 55px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255,255,255,0.28);
-}
-
-.cater-photo-one {
-  left: 6%;
-  top: 14%;
-  transform: rotate(-4deg);
-}
-
-.cater-photo-two {
-  right: 5%;
-  bottom: 12%;
-  transform: rotate(4deg);
-}
-
-.section-cater .about-card {
-  position: relative;
-  z-index: 2;
-  max-width: 650px;
-  padding: 2.25rem 2.3rem 2rem;
-  border-radius: 28px;
-}
-
-.section-cater .about-card h2,
-.section-about .about-card h2,
-.contact-card h2 {
-  font-size: clamp(2.15rem, 4vw, 3rem);
-}
-
-.section-about .about-card {
-  max-width: 760px;
-  padding: 2.25rem 2.4rem 2rem;
-  border-radius: 28px;
-}
-
-.contact-inner {
-  gap: 1rem;
-  grid-template-columns: 0.95fr 1.35fr;
-  padding: 0.8rem;
-  border-radius: 30px;
-  background: rgba(21,18,16,0.14);
-  border: 1px solid rgba(91,58,37,0.14);
-  box-shadow: 0 20px 55px rgba(0,0,0,0.2);
-}
-
-.contact-card,
-.contact-map {
-  border-radius: 22px;
-}
-
-.contact-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.contact-address {
-  font-size: 1.1rem;
-}
-
-.contact-hours {
-  margin-top: 0.3rem;
-}
-
-.map-embed-wrapper {
-  height: 100%;
-  min-height: 390px;
-  padding-top: 0;
-}
 
 .site-footer {
   margin-top: 0;
@@ -1408,47 +1312,6 @@ body {
     border-radius: 14px;
   }
 
-  .section-cater {
-    min-height: 650px;
-  }
-
-  .section-cater::before {
-    inset: 3% 0.65rem;
-  }
-
-  .cater-photo {
-    width: 58vw;
-    opacity: 0.72;
-  }
-
-  .cater-photo-one {
-    left: -6%;
-    top: 5%;
-  }
-
-  .cater-photo-two {
-    right: -8%;
-    bottom: 4%;
-  }
-
-  .section-cater .about-card,
-  .section-about .about-card {
-    padding: 1.6rem 1.25rem 1.35rem;
-    border-radius: 22px;
-  }
-
-  .contact-inner {
-    padding: 0.5rem;
-    border-radius: 22px;
-  }
-
-  .contact-card {
-    padding: 1.45rem 1.2rem;
-  }
-
-  .map-embed-wrapper {
-    min-height: 320px;
-  }
 
   .footer-inner {
     gap: 0.55rem;
@@ -1675,65 +1538,6 @@ body {
   }
 }
 
-
-/* ==============================
-   CATERING SECTION — CLEAN RESET
-   ============================== */
-
-.section-cater {
-  min-height: 0;
-  display: block;
-  overflow: visible;
-  isolation: auto;
-  padding-top: 4.25rem;
-  padding-bottom: 4.25rem;
-}
-
-.section-cater::before {
-  content: none;
-}
-
-.cater-photo {
-  display: none !important;
-}
-
-.section-cater .about-inner {
-  display: flex;
-  justify-content: center;
-}
-
-.section-cater .about-card {
-  position: relative;
-  z-index: 1;
-  width: min(680px, 100%);
-  max-width: 680px;
-  padding: 2rem 2rem 1.8rem;
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
-    linear-gradient(135deg, rgba(39,28,22,0.50), rgba(18,22,25,0.40));
-  border: 1px solid rgba(225,190,148,0.20);
-  box-shadow: 0 22px 55px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.05);
-}
-
-@media (max-width: 720px) {
-  .section-cater {
-    min-height: 0;
-    padding-top: 3.25rem;
-    padding-bottom: 3.25rem;
-  }
-
-  .section-cater::before {
-    content: none;
-  }
-
-  .section-cater .about-card {
-    width: 100%;
-    max-width: none;
-    padding: 1.55rem 1.2rem 1.35rem;
-    border-radius: 20px;
-  }
-}
 
 
 /* ==============================
@@ -2023,79 +1827,113 @@ body {
 }
 
 
+
+
 /* ==============================
-   CATER / ABOUT FLOW HARD RESET
-   Prevent iOS glass-card stacking between sibling sections.
+   LOWER PAGE LAYOUT — CANONICAL
+   One source of truth for Cater / About / Contact.
    ============================== */
 
 .section-cater,
-.section-about {
-  position: relative;
-  display: flow-root;
-  width: 100%;
+.section-about,
+.section-contact {
+  display: block;
+  position: static;
   min-height: 0;
+  width: 100%;
   margin: 0;
+  padding: 3.5rem 0;
+  overflow: visible;
+  isolation: auto;
   transform: none;
-  isolation: isolate;
-  z-index: 0;
+  filter: none;
 }
 
-.section-cater {
-  padding: 3.25rem 0;
+.section-cater::before,
+.section-about::before,
+.section-contact::before {
+  content: none;
 }
 
-.section-about {
-  padding: 3.25rem 0 4rem;
+.cater-photo {
+  display: none !important;
 }
 
 .section-cater .about-inner,
 .section-about .about-inner {
+  display: flex;
   position: static;
   width: 100%;
-  display: flex;
   justify-content: center;
+  align-items: stretch;
   transform: none;
 }
 
 .section-cater .about-card,
 .section-about .about-card {
+  display: block;
   position: static;
-  z-index: auto;
-  transform: none;
+  width: min(680px, 100%);
+  max-width: 680px;
+  min-height: 0;
   margin: 0 auto;
+  padding: 2rem;
+  border-radius: 24px;
+  transform: none;
+  z-index: auto;
+  isolation: auto;
 }
 
-.section-cater + .section-about {
-  margin-top: 0;
+.section-about .about-card {
+  width: min(760px, 100%);
+  max-width: 760px;
 }
 
-@media (max-width: 720px) {
-  .section-cater {
-    padding: 2.75rem 0;
-  }
-
-  .section-about {
-    padding: 2.75rem 0 3.5rem;
-  }
-
-  .section-cater .about-inner,
-  .section-about .about-inner {
-    position: static;
-  }
-
-  .section-cater .about-card,
-  .section-about .about-card {
-    position: static;
-    z-index: auto;
-    margin: 0 auto;
-  }
+.contact-inner {
+  display: grid;
+  position: static;
+  grid-template-columns: 0.95fr 1.35fr;
+  gap: 1rem;
+  align-items: stretch;
+  padding: 0.8rem;
+  border-radius: 30px;
+  background: rgba(21,18,16,0.14);
+  border: 1px solid rgba(91,58,37,0.14);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.2);
+  transform: none;
 }
 
+.contact-card,
+.contact-map {
+  position: static;
+  min-height: 0;
+  border-radius: 22px;
+  transform: none;
+  z-index: auto;
+}
 
-/* ==============================
-   IOS COMPOSITING FIX
-   Keep PTR transforms temporary and avoid mobile glass-layer collisions.
-   ============================== */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.map-embed-wrapper {
+  height: 100%;
+  min-height: 390px;
+  padding-top: 0;
+}
+
+.section-cater .about-card,
+.section-about .about-card,
+.contact-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01)),
+    linear-gradient(135deg, rgba(58,43,34,0.84), rgba(31,30,30,0.80));
+}
 
 .page {
   will-change: auto;
@@ -2106,21 +1944,44 @@ body {
   will-change: transform;
 }
 
-@media (max-width: 720px) {
-  .menu-card,
-  .about-card,
-  .contact-card {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01)),
-      linear-gradient(135deg, rgba(58,43,34,0.82), rgba(31,30,30,0.78));
+@media (max-width: 900px) {
+  .contact-inner {
+    grid-template-columns: 1fr;
   }
+}
 
+@media (max-width: 720px) {
   .section-cater,
   .section-about,
   .section-contact {
-    transform: none;
-    filter: none;
+    padding: 2.75rem 0;
+  }
+
+  .section-cater .about-card,
+  .section-about .about-card {
+    width: 100%;
+    max-width: none;
+    padding: 1.55rem 1.2rem 1.35rem;
+    border-radius: 20px;
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 22px;
+  }
+
+  .contact-card {
+    padding: 1.45rem 1.2rem;
+  }
+
+  .contact-map {
+    order: 0;
+  }
+
+  .map-embed-wrapper {
+    min-height: 320px;
   }
 }
