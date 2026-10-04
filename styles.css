@@ -2090,3 +2090,37 @@ body {
     margin: 0 auto;
   }
 }
+
+
+/* ==============================
+   IOS COMPOSITING FIX
+   Keep PTR transforms temporary and avoid mobile glass-layer collisions.
+   ============================== */
+
+.page {
+  will-change: auto;
+}
+
+.page.ptr-pulling,
+.page.ptr-settling {
+  will-change: transform;
+}
+
+@media (max-width: 720px) {
+  .menu-card,
+  .about-card,
+  .contact-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01)),
+      linear-gradient(135deg, rgba(58,43,34,0.82), rgba(31,30,30,0.78));
+  }
+
+  .section-cater,
+  .section-about,
+  .section-contact {
+    transform: none;
+    filter: none;
+  }
+}
