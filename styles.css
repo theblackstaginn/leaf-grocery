@@ -918,16 +918,18 @@ p {
 
   .hero-sign {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 1fr;
     grid-template-areas:
-      "kicker actions"
-      "headline actions"
-      "copy note";
+      "kicker"
+      "headline"
+      "copy"
+      "actions"
+      "note";
+    justify-items: center;
     align-items: center;
-    column-gap: 1.5rem;
-    row-gap: 0.3rem;
+    row-gap: 0.35rem;
     padding: 1rem 1.35rem;
-    text-align: left;
+    text-align: center;
     border-radius: 18px;
   }
 
@@ -939,7 +941,7 @@ p {
   .hero h1 {
     grid-area: headline;
     max-width: 760px;
-    margin: 0;
+    margin: 0 auto;
     font-size: clamp(1.8rem, 2.8vw, 2.55rem);
     line-height: 1.02;
   }
@@ -947,22 +949,23 @@ p {
   .hero-sign > p:not(.hero-action-note) {
     grid-area: copy;
     max-width: 760px;
-    margin: 0;
+    margin: 0 auto;
     font-size: 0.98rem;
     line-height: 1.35;
   }
 
   .hero-actions {
     grid-area: actions;
-    justify-self: end;
-    margin: 0;
+    justify-self: center;
+    margin: 0.35rem 0 0;
     flex-wrap: nowrap;
+    justify-content: center;
     gap: 0.45rem;
   }
 
   .hero-action-note {
     grid-area: note;
-    justify-self: end;
+    justify-self: center;
     max-width: 360px;
     margin: 0;
     text-align: center;
