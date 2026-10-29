@@ -532,7 +532,7 @@ p {
 }
 
 .posted-menu {
-  flex: 0 0 calc((100% - 2.7rem) / 3);
+  flex: 0 0 calc((100% - 1.35rem) / 2);
   min-width: 0;
   margin: 0;
   padding: 0.8rem;
